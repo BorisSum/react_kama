@@ -1,0 +1,12 @@
+.friends_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.friends_inner {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}

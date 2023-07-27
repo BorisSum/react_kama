@@ -1,0 +1,20 @@
+.dialog_wrapper {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialogs {
+    color: green;
+    padding: 20px;
+}
+
+.messages {
+    color: darkblue;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+

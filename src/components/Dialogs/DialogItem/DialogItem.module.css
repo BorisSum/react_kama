@@ -1,0 +1,19 @@
+.dialog {
+    display: flex;
+    align-items: center;
+}
+
+.avatar img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.dialog a:hover {
+    color: wheat;
+}
+
+.dialog a.user_active {
+    color: white;
+}

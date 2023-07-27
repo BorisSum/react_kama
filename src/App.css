@@ -8,26 +8,11 @@
     grid-gap: 10px;
 }
 
-.header {
-    grid-area: h;
-    background-color: cadetblue;
-}
-
-.header img {
-    width: 60px;
-}
-
-.nav {
-    grid-area: n;
-    background-color: burlywood;
-}
-
-.profile {
+.app_wrapper_content {
     grid-area: c;
     background-color: cornflowerblue;
 }
 
-.profile_header img {
-    width: 100%;
-    height: 200px;
+a {
+    text-decoration: none;
 }
