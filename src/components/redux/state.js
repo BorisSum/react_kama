@@ -1,3 +1,5 @@
+import { rerenderEntireTree } from "../../render";
+
 const state = {
     dialogsPage: {
         dialogs: [
@@ -6,12 +8,7 @@ const state = {
             { id: 3, name: "state-User-3", avatar: "https://www.yugatech.com/wp-content/uploads/2020/09/Facebook-Avatar.jpg"},
             { id: 4, name: "state-User-4", avatar: null},
             { id: 5, name: "state-User-5", avatar: null},
-            { id: 6, name: "state-User-6", avatar: null},
-            { id: 7, name: "state-User-7", avatar: "https://www.yugatech.com/wp-content/uploads/2020/09/Facebook-Avatar.jpg"}
-        ],
-        messages: [
-            { id: 1, message: "state-Message - 1"},
-            { id: 2, message: "state-Message - 2"},
+
             { id: 3, message: "state-Message - 3"},
             { id: 4, message: "state-Message - 4"}
         ]
@@ -58,6 +55,7 @@ export const addPost = messageText => {
         likesCount: 0
     };
     state.profilePage.posts.push(newPost);
+    rerenderEntireTree(state);
 }
 
 export default state;
