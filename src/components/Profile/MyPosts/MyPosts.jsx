@@ -2,12 +2,14 @@ import React from 'react';
 import style from './MyPosts.module.css';
 import Post from './Posts/Post';
 
-const MyPosts = ({ posts, addPost }) => {
+const MyPosts = (props) => {
+
+    const { posts, addPost, newPostText, updateNewPostText } = props;
     const postElements = posts.map( p => <Post message={p.message} likesCount={p.likesCount}/>)
     const newPostTextElement = React.createRef();
-    const addPostEventHandler = () => {
-        addPost(newPostTextElement.current.value);
-        newPostTextElement.current.value = "";
+
+    const changeNewPostText = () => {
+        updateNewPostText(newPostTextElement.current.value);
     }
 
     return (
@@ -17,12 +19,15 @@ const MyPosts = ({ posts, addPost }) => {
                     <div>
                         <textarea
                             ref={newPostTextElement}
+                            value={newPostText}
+                            onChange={changeNewPostText}
                             cols="30"
                             rows="5"
-                        ></textarea>
+                            autoFocus
+                        />
                     </div>
                     <div>
-                        <button onClick={ addPostEventHandler }>Add Post</button>
+                        <button onClick={ addPost }>Add Post</button>
                     </div>
                 </div>
                 <div className={style.posts}>

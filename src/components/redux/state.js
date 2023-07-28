@@ -19,7 +19,8 @@ const state = {
             { id: 1, message: "Hey, how are you?", likesCount: 10},
             { id: 2, message: "It's my first post!", likesCount: 15},
             { id: 3, message: "Yo it-kamasutra", likesCount: 20},
-        ]
+        ],
+        newPostText: 'H'
     },
 
     sidebar: {
@@ -48,14 +49,22 @@ const state = {
     }
 }
 
-export const addPost = messageText => {
+export const addPost = () => {
+    if (!state.profilePage.newPostText) return;
     const newPost = {
         id: 5,
-        message: messageText,
+        message: state.profilePage.newPostText,
         likesCount: 0
     };
     state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText = '';
     rerenderEntireTree(state);
 }
+
+export const updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText;
+    rerenderEntireTree(state);
+}
+
 
 export default state;

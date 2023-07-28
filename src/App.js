@@ -7,6 +7,7 @@ import {Route, Routes} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
+import { updateNewPostText } from './components/redux/state';
 
 function App({ state, addPost }) {
     return (
@@ -15,7 +16,7 @@ function App({ state, addPost }) {
             <Navbar friends={state.sidebar.friends}/>
             <div className="app_wrapper_content">
                 <Routes>
-                    <Route path="/profile" element={ <Profile state={ state.profilePage } addPost={addPost}/>}/>
+                    <Route path="/profile" element={ <Profile posts={ state.profilePage.posts } addPost={addPost} newPostText={state.profilePage.newPostText} updateNewPostText={updateNewPostText}/>}/>
                     <Route path="/dialogs/*" element={ <Dialogs state={ state.dialogsPage } />}/>
                     <Route path="/news" Component={News}/>
                     <Route path="/music" Component={Music}/>
