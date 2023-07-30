@@ -23,7 +23,6 @@ const MyPosts = (props) => {
                             onChange={changeNewPostText}
                             cols="30"
                             rows="5"
-                            autoFocus
                         />
                     </div>
                     <div>
