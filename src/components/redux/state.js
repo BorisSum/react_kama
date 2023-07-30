@@ -8,10 +8,14 @@ const state = {
             { id: 3, name: "state-User-3", avatar: "https://www.yugatech.com/wp-content/uploads/2020/09/Facebook-Avatar.jpg"},
             { id: 4, name: "state-User-4", avatar: null},
             { id: 5, name: "state-User-5", avatar: null},
-
+        ],
+        messages: [
+            { id: 1, message: "state-Message - 1"},
+            { id: 2, message: "state-Message - 2"},
             { id: 3, message: "state-Message - 3"},
             { id: 4, message: "state-Message - 4"}
-        ]
+        ],
+        newMessageText: ''
     },
 
     profilePage: {
@@ -20,7 +24,7 @@ const state = {
             { id: 2, message: "It's my first post!", likesCount: 15},
             { id: 3, message: "Yo it-kamasutra", likesCount: 20},
         ],
-        newPostText: 'H'
+        newPostText: ''
     },
 
     sidebar: {
@@ -63,6 +67,22 @@ export const addPost = () => {
 
 export const updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText;
+    rerenderEntireTree(state);
+}
+
+export const addMessage = () => {
+    if (!state.dialogsPage.newMessageText) return;
+    const newMessage = {
+        id: 5,
+        message: state.dialogsPage.newMessageText
+    }
+    state.dialogsPage.messages.push(newMessage);
+    state.dialogsPage.newMessageText = '';
+    rerenderEntireTree(state);
+}
+
+export const updateNewMessageText = (newText) => {
+    state.dialogsPage.newMessageText = newText;
     rerenderEntireTree(state);
 }
 

@@ -3,7 +3,8 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import AddMessageForm from "./Message/AddMessageForm/AddMessageForm";
 
-const Dialogs = ({ state }) => {
+const Dialogs = (props) => {
+    const { state, addMessage, updateNewMessageText } = props;
 
     const dialogElements = state.dialogs.map( d => <DialogItem name={d.name} id={d.id} avatar={d.avatar}/>);
     const messageElements = state.messages.map( m => <Message message={m.message} />);
@@ -18,7 +19,7 @@ const Dialogs = ({ state }) => {
                 <div>
                     { messageElements }
                 </div>
-                <AddMessageForm />
+                <AddMessageForm addMessage={addMessage} updateNewMessageText={updateNewMessageText} newText={state.newMessageText}/>
             </div>
         </div>
     );
