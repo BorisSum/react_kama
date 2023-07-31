@@ -4,12 +4,22 @@ import Post from './Posts/Post';
 
 const MyPosts = (props) => {
 
-    const { posts, addPost, newPostText, updateNewPostText } = props;
+    const { dispatch, posts, newPostText } = props;
     const postElements = posts.map( p => <Post message={p.message} likesCount={p.likesCount}/>)
     const newPostTextElement = React.createRef();
 
-    const changeNewPostText = () => {
-        updateNewPostText(newPostTextElement.current.value);
+    const changeNewPostTextHandler = () => {
+        dispatch({
+            type: 'UPDATE_NEW_POST_TEXT',
+            newText: newPostTextElement.current.value
+
+        });
+    }
+
+    const addPostHandler = () => {
+        dispatch({
+            type: 'ADD_POST'
+        });
     }
 
     return (
@@ -20,13 +30,13 @@ const MyPosts = (props) => {
                         <textarea
                             ref={newPostTextElement}
                             value={newPostText}
-                            onChange={changeNewPostText}
+                            onChange={changeNewPostTextHandler}
                             cols="30"
                             rows="5"
                         />
                     </div>
                     <div>
-                        <button onClick={ addPost }>Add Post</button>
+                        <button onClick={ addPostHandler }>Add Post</button>
                     </div>
                 </div>
                 <div className={style.posts}>

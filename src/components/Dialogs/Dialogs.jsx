@@ -4,7 +4,7 @@ import Message from "./Message/Message";
 import AddMessageForm from "./Message/AddMessageForm/AddMessageForm";
 
 const Dialogs = (props) => {
-    const { state, addMessage, updateNewMessageText } = props;
+    const { dispatch, state } = props;
 
     const dialogElements = state.dialogs.map( d => <DialogItem name={d.name} id={d.id} avatar={d.avatar}/>);
     const messageElements = state.messages.map( m => <Message message={m.message} />);
@@ -19,7 +19,7 @@ const Dialogs = (props) => {
                 <div>
                     { messageElements }
                 </div>
-                <AddMessageForm addMessage={addMessage} updateNewMessageText={updateNewMessageText} newText={state.newMessageText}/>
+                <AddMessageForm dispatch={dispatch} newText={state.newMessageText}/>
             </div>
         </div>
     );

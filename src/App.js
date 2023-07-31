@@ -8,15 +8,15 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
-function App({ state, addPost, updateNewPostText, addMessage, updateNewMessageText }) {
+function App({ state, dispatch }) {
     return (
         <div className="app_wrapper">
             <Header />
             <Navbar friends={state.sidebar.friends}/>
             <div className="app_wrapper_content">
                 <Routes>
-                    <Route path="/profile" element={ <Profile posts={ state.profilePage.posts } addPost={addPost} newPostText={state.profilePage.newPostText} updateNewPostText={updateNewPostText}/> }/>
-                    <Route path="/dialogs/*" element={ <Dialogs state={ state.dialogsPage } addMessage={addMessage} newMessageText={state.dialogsPage.newMessageText} updateNewMessageText={updateNewMessageText}/> }/>
+                    <Route path="/profile" element={ <Profile dispatch={dispatch} posts={ state.profilePage.posts } newPostText={state.profilePage.newPostText}/> }/>
+                    <Route path="/dialogs/*" element={ <Dialogs dispatch={dispatch} state={ state.dialogsPage } newMessageText={state.dialogsPage.newMessageText}/> }/>
                     <Route path="/news" Component={News}/>
                     <Route path="/music" Component={Music}/>
                     <Route path="/settings" Component={Settings}/>

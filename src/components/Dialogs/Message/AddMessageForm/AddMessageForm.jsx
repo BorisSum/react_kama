@@ -2,16 +2,21 @@ import React from 'react';
 
 
 const AddMessageForm = (props) => {
-    const { newText, addMessage, updateNewMessageText } = props;
+    const { dispatch, newText } = props;
 
-    const addMess = () => {
-        addMessage();
+    const addMessageHandler = () => {
+        dispatch({
+            type: 'ADD_MESSAGE'
+        });
     }
 
     const mText = React.createRef();
 
-    const updateMessageText = () => {
-        updateNewMessageText(mText.current.value);
+    const updateMessageTextHandler = () => {
+        dispatch({
+            type: 'UPDATE_NEW_MESSAGE_TEXT',
+            newText: mText.current.value
+        });
     }
 
     return (
@@ -19,12 +24,12 @@ const AddMessageForm = (props) => {
             <textarea
                 ref={mText}
                 value={newText}
-                onChange={ updateMessageText }
+                onChange={ updateMessageTextHandler }
             >
             </textarea>
             <div>
                 <button
-                    onClick={addMess}
+                    onClick={ addMessageHandler }
                 >
                     Add Message
                 </button>
