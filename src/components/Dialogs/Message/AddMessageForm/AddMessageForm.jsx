@@ -1,22 +1,18 @@
 import React from 'react';
+import { addMessageActionCreator, updateMessageTextActionCreator} from '../../../redux/dialogs-reducer';
 
 
 const AddMessageForm = (props) => {
     const { dispatch, newText } = props;
 
     const addMessageHandler = () => {
-        dispatch({
-            type: 'ADD_MESSAGE'
-        });
+        dispatch(addMessageActionCreator());
     }
 
     const mText = React.createRef();
 
     const updateMessageTextHandler = () => {
-        dispatch({
-            type: 'UPDATE_NEW_MESSAGE_TEXT',
-            newText: mText.current.value
-        });
+        dispatch(updateMessageTextActionCreator(mText.current.value));
     }
 
     return (

@@ -1,3 +1,7 @@
+import { profileReducer } from './profile-reducer';
+import { dialogsReducer } from './dialogs-reducer';
+import { sidebarReducer } from './sidebar-reducer';
+
 const store = {
     _state: {
         dialogsPage: {
@@ -63,70 +67,14 @@ const store = {
     subscribe(observer) {
         this._callRenderSubscriber = observer;
     },
-    
-    addPost() {
-        if (!this._state.profilePage.newPostText) return;
-        const newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-            likesCount: 0
-        };
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._callRenderSubscriber(this._state);
-    },
-    
-    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText;
-        this._callRenderSubscriber(this._state);
-    },
-    
-    addMessage() {
-        if (!this._state.dialogsPage.newMessageText) return;
-        const newMessage = {
-            id: 5,
-            message: this._state.dialogsPage.newMessageText
-        }
-        this._state.dialogsPage.messages.push(newMessage);
-        this._state.dialogsPage.newMessageText = '';
-        this._callRenderSubscriber(this._state);
-    },
-    
-    updateNewMessageText(newText) {
-        this._state.dialogsPage.newMessageText = newText;
-        this._callRenderSubscriber(this._state);
-    },
 
     dispatch(action) {
-        if (action.type === 'ADD_POST') {
-            if (!this._state.profilePage.newPostText) return;
-            const newPost = {
-                id: 5,
-                message: this._state.profilePage.newPostText,
-                likesCount: 0
-            };
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callRenderSubscriber(this._state);
-        }
-        else if (action.type === 'UPDATE_NEW_POST_TEXT') {
-            this._state.profilePage.newPostText = action.newText;
-            this._callRenderSubscriber(this._state);
-        }
-        else if (action.type === 'ADD_MESSAGE') {
-            if (!this._state.dialogsPage.newMessageText) return;
-            const newMessage = {
-                id: 5,
-                message: this._state.dialogsPage.newMessageText
-            }
-            this._state.dialogsPage.messages.push(newMessage);
-            this._state.dialogsPage.newMessageText = '';
-            this._callRenderSubscriber(this._state);
-        }
-        else if (action.type === 'UPDATE_NEW_MESSAGE_TEXT') {
-            this._state.dialogsPage.newMessageText = action.newText;
-            this._callRenderSubscriber(this._state);
-        }
+        
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+
+        this._callRenderSubscriber(this._state);
     }
 }
 
