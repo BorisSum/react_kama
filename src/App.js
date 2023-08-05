@@ -2,22 +2,21 @@ import './App.css';
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
 import {Route, Routes} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 
-function App({ state, dispatch }) {
-    debugger;
+function App({ store }) {
     return (
         <div className="app_wrapper">
             <Header />
-            <Navbar friends={state.sidebar.friends}/>
+            <Navbar friends={store.getState().sidebar.friends}/>
             <div className="app_wrapper_content">
                 <Routes>
-                    <Route path="/profile" element={ <Profile dispatch={dispatch} posts={ state.profilePage.posts } newPostText={state.profilePage.newPostText}/> }/>
-                    <Route path="/dialogs/*" element={ <Dialogs dispatch={dispatch} state={ state.dialogsPage } newMessageText={state.dialogsPage.newMessageText}/> }/>
+                    <Route path="/profile" element={ <Profile store={store}/> }/>
+                    <Route path="/dialogs/*" element={ <DialogsContainer store={store}/> }/>
                     <Route path="/news" Component={News}/>
                     <Route path="/music" Component={Music}/>
                     <Route path="/settings" Component={Settings}/>
