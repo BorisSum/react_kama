@@ -9,6 +9,7 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
 function App({ state, dispatch }) {
+    debugger;
     return (
         <div className="app_wrapper">
             <Header />
