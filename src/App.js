@@ -8,15 +8,16 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 
-function App({ store }) {
+function App() {
     return (
         <div className="app_wrapper">
             <Header />
-            <Navbar friends={store.getState().sidebar.friends}/>
+            <Navbar friends={[]}/>
+            {/* <Navbar friends={store.getState().sidebar.friends}/> */}
             <div className="app_wrapper_content">
                 <Routes>
-                    <Route path="/profile" element={ <Profile store={store}/> }/>
-                    <Route path="/dialogs/*" element={ <DialogsContainer store={store}/> }/>
+                    {/* <Route path="/profile" element={ <Profile store={store}/> }/> */}
+                    <Route path="/dialogs/*" element={ <DialogsContainer/> }/>
                     <Route path="/news" Component={News}/>
                     <Route path="/music" Component={Music}/>
                     <Route path="/settings" Component={Settings}/>

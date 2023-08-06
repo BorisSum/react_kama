@@ -4,7 +4,7 @@ import Message from "./Message/Message";
 import AddMessageForm from "./Message/AddMessageForm/AddMessageForm";
 
 const Dialogs = (props) => {
-
+    debugger;
     const {dialogsPage, addMessage, updateNewMessageText} = props;
 
     const {dialogs, messages, newMessageText} = dialogsPage;
