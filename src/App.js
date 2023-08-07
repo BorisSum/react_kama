@@ -12,11 +12,10 @@ function App() {
     return (
         <div className="app_wrapper">
             <Header />
-            <Navbar friends={[]}/>
-            {/* <Navbar friends={store.getState().sidebar.friends}/> */}
+            <Navbar/>
             <div className="app_wrapper_content">
                 <Routes>
-                    {/* <Route path="/profile" element={ <Profile store={store}/> }/> */}
+                    <Route path="/profile" element={ <Profile/> }/>
                     <Route path="/dialogs/*" element={ <DialogsContainer/> }/>
                     <Route path="/news" Component={News}/>
                     <Route path="/music" Component={Music}/>

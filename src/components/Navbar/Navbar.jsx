@@ -1,8 +1,8 @@
 import styles from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
-import Friends from "./Friends/Friends";
+import FriendsContainer from './Friends/FriendsContainer';
 
-const Navbar = ({ friends }) => {
+const Navbar = () => {
     const setActive = ({ isActive }) => isActive? styles.active : null;
 
     return (
@@ -12,7 +12,7 @@ const Navbar = ({ friends }) => {
             <div className={styles.item}><NavLink to="/news" className={setActive}>News</NavLink></div>
             <div className={styles.item}><NavLink to="/music" className={setActive}>Music</NavLink></div>
             <div className={styles.item}><NavLink to="/settings" className={setActive}>Settings</NavLink></div>
-            <Friends friends={friends}/>
+            <FriendsContainer/>
         </nav>
     )
 }
