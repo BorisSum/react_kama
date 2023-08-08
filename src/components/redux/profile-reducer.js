@@ -11,7 +11,6 @@ const initialState = {
 };
 
 export const profileReducer = (state=initialState, action) => {
-    const newState = {...state};
     switch (action.type) {
         case ADD_POST:
             if (!state.newPostText) return;
@@ -20,13 +19,18 @@ export const profileReducer = (state=initialState, action) => {
                 message: state.newPostText,
                 likesCount: 0
             };
-            newState.posts = [...state.posts, newPost];
-            newState.newPostText = '';
-            return newState;
+
+            return {
+                ...state,
+                posts: [...state.posts, newPost],
+                newPostText: ''
+            }
 
         case UPDATE_NEW_POST_TEXT:
-            newState.newPostText = action.newText;
-            return newState;
+            return {
+                ...state,
+                newPostText: action.newText
+            }
 
         default:
             return state
