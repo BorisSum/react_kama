@@ -1,10 +1,20 @@
+import { connect } from 'react-redux';
 
-const Users = () => {
+const Users = (props) => {
+    debugger
+    const { userList } = props;
+
     return (
-        <div>
-            Users
-        </div>
+        <ul>
+            {
+                userList.map( u => <li key={u.id}>{u.id}: {u.fullName}, {u.status}, {u.location.country}</li>)
+            }
+        </ul>
     )
 }
 
-export default Users;
+const mapStateToProps = state => ({
+    userList: state.usersPage.userList
+});
+
+export default connect(mapStateToProps)(Users);

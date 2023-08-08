@@ -1,5 +1,8 @@
-const ADD_MESSAGE = 'ADD_MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
+// const ADD_MESSAGE = 'ADD_MESSAGE';
+// const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
+
+const ADD_MESSAGE = Symbol();
+const UPDATE_NEW_MESSAGE_TEXT = Symbol();
 
 const initialState = {
     dialogs: [
