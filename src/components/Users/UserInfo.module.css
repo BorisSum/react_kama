@@ -1,0 +1,65 @@
+.user_info_wrapper {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 20px 40px;
+}
+
+.user_info_img img {
+    border-radius: 50%;
+    width: 120px;
+}
+
+.user_info_main {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user_info_main h4 {
+    padding: 0;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;    
+    color: black;
+}
+
+.user_info_main p {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 100;    
+    color: brown;    
+}
+
+.user_info_location {
+    width: 100%;
+    font-size: 14px;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.user_info_button {
+    width: 100%;
+}
+
+.user_info_button button {
+    display: block;
+    width: 100%;
+    padding: 7px;
+    border-radius: 3px;
+    background: none;
+    border: none;
+    border: 1px solid darkblue;
+}
+
+.user_info_button button:hover {
+    cursor: pointer;
+}
